@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//maybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cafuc.addressbook.mapper.AddressBookMapper">
+    <select id="searchAll" resultType="com.cafuc.addressbook.model.AddressBook">
+        SELECT * from addressbook
+    </select>
+    <select id="getById" resultType="com.cafuc.addressbook.model.AddressBook">
+        SELECT * from addressbook WHERE id=#{id}
+    </select>
+    <delete id="deleteById" parameterType="Integer">
+        DELETE FROM addressbook WHERE id=#{id}
+    </delete>
+    <insert id="insert" keyProperty="id">
+        INSERT INTO addressbook (name,tel)
+        VALUES (#{name},#{tel})
+    </insert>
+    <select id="sort">
+        SELECT * FROM addressbook ORDER BY CONVERT(name USING gbk)
+    </select>
+</mapper>
